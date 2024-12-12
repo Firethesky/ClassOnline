@@ -23,7 +23,7 @@ public class chat extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 //        返回消息列表
         req.setAttribute("messages",messageList);
-        req.getRequestDispatcher("chatBox.jsp").forward(req,resp);
+        req.getRequestDispatcher("/chatRoom/chatBox.jsp").forward(req,resp);
     }
 
 }

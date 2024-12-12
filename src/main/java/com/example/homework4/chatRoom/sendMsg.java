@@ -28,6 +28,6 @@ public class sendMsg extends HttpServlet {
         req.setAttribute("users",chat.userList);
         req.setAttribute("current",session.getAttribute("currentUser"));
 
-        req.getRequestDispatcher("chatRoom.jsp").forward(req,resp);
+        req.getRequestDispatcher("/chatRoom/chatRoom.jsp").forward(req,resp);
     }
 }

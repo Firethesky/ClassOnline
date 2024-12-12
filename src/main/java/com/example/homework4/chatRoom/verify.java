@@ -29,7 +29,7 @@ public class verify extends HttpServlet {
             req.setAttribute("current",user);
             chat.messageList.add(new Message(user,"进入聊天室"));
 //         跳转到聊天室
-            req.getRequestDispatcher("chatRoom.jsp").forward(req, resp);
+            req.getRequestDispatcher("/menu/selCou1.jsp").forward(req, resp);
         }else{
             req.setAttribute("flag",Boolean.FALSE);
             resp.sendRedirect("index.jsp");

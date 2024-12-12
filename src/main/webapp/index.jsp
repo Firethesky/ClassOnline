@@ -15,8 +15,6 @@
     <input type="text" name="inCaptcha" required /><br>
     <input type="submit" value="登录" />
 </form>
-
-
 </body>
 
 </html>
