@@ -85,6 +85,9 @@
     <!-- 示例课程卡片 -->
     <div class="course-card">
         <h2>课程名称：项目管理与进程改进</h2>
+        <%
+            out.println("<h3>"+request.getAttribute("current")+"</h3>");
+        %>
         <p>课程描述：培养合格的软件项目管理者，适合有一定基础的学生.</p>
         <div class="details">
             <span>时间：周三 13:15-15:50</span>

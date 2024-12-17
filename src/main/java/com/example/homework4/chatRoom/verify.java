@@ -20,7 +20,7 @@ public class verify extends HttpServlet {
         String in = req.getParameter("inCaptcha");
         String captcha = session.getAttribute("captcha").toString();
         if (in != null && in.equals(captcha)) {
-//        添加登录用户名
+//        添加登录用户名到用户列表
             user = req.getParameter("username");
             chat.userList.add(user);
             req.setAttribute("users", chat.userList);
@@ -28,7 +28,7 @@ public class verify extends HttpServlet {
             session.setAttribute("currentUser", user);
             req.setAttribute("current",user);
             chat.messageList.add(new Message(user,"进入聊天室"));
-//         跳转到聊天室
+//         跳转到课程选择界面
             req.getRequestDispatcher("/menu/selCou1.jsp").forward(req, resp);
         }else{
             req.setAttribute("flag",Boolean.FALSE);
