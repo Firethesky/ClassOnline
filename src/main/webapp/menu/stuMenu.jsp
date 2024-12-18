@@ -151,8 +151,9 @@
         </div>
         <div class="username">学生姓名
             <%
-                out.println("<h3>"+request.getAttribute("current")+"</h3>");
-            %></div>
+                out.println("<h3>"+(String) session.getAttribute("currentUser")+"</h3>");
+            %>
+        </div>
     </div>
 
     <div class="inner-layer">
@@ -163,7 +164,7 @@
         <a href="javascript:void(0);" class="function-btn" onclick="submitPage('chat')">
             <i class="fas fa-comments"></i> 学习互动
         </a>
-        <a href="javascript:void(0);" class="function-btn" onclick="submitPage('prac')">
+        <a href="javascript:void(0);" class="function-btn" onclick="submitPage('msgBoardDirect')">
             <i class="fas fa-pencil-alt"></i> 习题管理
         </a>
         <a href="javascript:void(0);" class="function-btn" onclick="submitPage('qa')">

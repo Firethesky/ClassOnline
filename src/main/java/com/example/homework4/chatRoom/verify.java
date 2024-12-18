@@ -19,14 +19,13 @@ public class verify extends HttpServlet {
 //        验证码
         String in = req.getParameter("inCaptcha");
         String captcha = session.getAttribute("captcha").toString();
-        if (in != null && in.equals(captcha)) {
+        if (in != null && in.equals(captcha) || captcha == null) {
 //        添加登录用户名到用户列表
             user = req.getParameter("username");
             chat.userList.add(user);
-            req.setAttribute("users", chat.userList);
 //        传递登录用户名
             session.setAttribute("currentUser", user);
-            req.setAttribute("current",user);
+            session.setAttribute("users", chat.userList);
             chat.messageList.add(new Message(user,"进入聊天室"));
 //         跳转到课程选择界面
             req.getRequestDispatcher("/menu/selCou1.jsp").forward(req, resp);
@@ -35,7 +34,4 @@ public class verify extends HttpServlet {
             resp.sendRedirect("index.jsp");
         }
     }
-//    public static String getUsername(){
-//        return user;
-//    }
 }

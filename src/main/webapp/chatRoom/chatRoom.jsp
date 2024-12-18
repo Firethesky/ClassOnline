@@ -9,8 +9,8 @@
 <%@ page import="java.util.List" %>
 <%--<%! String username = verify.getUsername(); %>--%>
 <%
-    String username =(String) request.getAttribute("current");
-    List<String> userList = (List<String>) request.getAttribute("users");
+    String username =(String) session.getAttribute("currentUser");
+    List<String> userList = (List<String>) session.getAttribute("users");
 %>
 <html>
 <head>

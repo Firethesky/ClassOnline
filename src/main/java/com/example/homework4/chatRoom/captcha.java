@@ -21,6 +21,7 @@ public class captcha extends HttpServlet {
         String captcha =createCaptcha(6);
         HttpSession session = request.getSession();
         session.setAttribute("captcha",captcha);
+        System.out.println("验证码: "+captcha);
 //        生成图片
         BufferedImage img = new BufferedImage(width,height,BufferedImage.TYPE_INT_RGB);
         Graphics g = img.getGraphics();

@@ -20,8 +20,8 @@ public class PageLoader1Servlet extends HttpServlet {
                 request.setAttribute("title", "学习互动");
                 request.setAttribute("description", "这里是学习互动页面的详细描述");
                 break;
-            case "prac":
-                targetPage = "/prac.jsp";
+            case "msgBoardDirect":
+                targetPage = "/msgBoard/msgList.jsp";
                 request.setAttribute("title", "习题管理");
                 request.setAttribute("description", "这里是习题管理页面的详细描述");
                 break;
