@@ -1,20 +1,129 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<!DOCTYPE html>
-<html>
-
+<%--
+  Created by IntelliJ IDEA.
+  User: Lenovo
+  Date: 2024/12/9
+  Time: 14:13
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html lang="zh-CN">
 <head>
-    <title>login</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7fc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .login-container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+
+        .login-container h2 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .form-group label {
+            font-size: 14px;
+            color: #555;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group select,
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .form-group select {
+            background-color: #f9f9f9;
+        }
+
+        .form-group input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .form-group input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .form-footer {
+            margin-top: 20px;
+            font-size: 12px;
+            color: #777;
+        }
+    </style>
 </head>
-
 <body>
-<h1>欢迎来到网页聊天室</h1>
-<form action="verify" method="post">
-    用户名:<input type="text" name="username"><br><br>
-    <img src="captcha" alt="验证码" /><br>
-    验证码(错误会刷新网页):<br>
-    <input type="text" name="inCaptcha" required /><br>
-    <input type="submit" value="登录" />
-</form>
-</body>
 
+<div class="login-container">
+    <h2>用户登录</h2>
+    <c:if test="${not empty message}">
+        <div class="error-message">${message}</div>
+    </c:if>
+    <form action="login1" method="post">
+        <div class="form-group">
+            <label for="identity">身份:</label>
+            <select name="identity" id="identity" required>
+                <option value="student">学生</option>
+                <option value="teacher">老师</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="id">学号/工号:</label>
+            <input type="text" id="id" name="id" required placeholder="请输入学号/工号">
+        </div>
+
+        <div class="form-group">
+            <label for="password">密码:</label>
+            <input type="password" id="password" name="password" required placeholder="请输入密码">
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="登录">
+        </div>
+
+        <div class="form-footer">
+            <p>没有账号？<a href="register.jsp">注册</a></p>
+        </div>
+    </form>
+</div>
+
+</body>
 </html>
+

@@ -96,7 +96,7 @@
 </div>
 <script>
     function redirectToMenu() {
-        window.location.href = 'menu/teaMenu.jsp'; // 设置跳转路径
+        window.location.href = 'teaMenu.jsp'; // 设置跳转路径
     }
 </script>
 

@@ -85,26 +85,19 @@
     <!-- 示例课程卡片 -->
     <div class="course-card">
         <h2>课程名称：项目管理与进程改进</h2>
-        <%
-            out.println("<h3>"+request.getAttribute("current")+"</h3>");
-        %>
         <p>课程描述：培养合格的软件项目管理者，适合有一定基础的学生.</p>
         <div class="details">
             <span>时间：周三 13:15-15:50</span>
             <span>地点：一教337</span>
             <span>讲师：欧老师</span>
-            <form action="selCou1Servlet" method="post">
-                <input type="submit" value="查看详情">
-            </form>
-<%--            <button type="submit">查看详情</button>--%>
-<%--            <button onclick="redirectToMenu()" >查看详情</button>--%>
+            <button onclick="redirectToMenu()">查看详情</button>
         </div>
     </div>
 </div>
 <script>
-    // function redirectToMenu() {
-    //     window.location.href = 'menu/stuMenu.jsp'; // 设置跳转路径
-    // }
+    function redirectToMenu() {
+        window.location.href = 'stuMenu.jsp'; // 设置跳转路径
+    }
 </script>
 
 </body>

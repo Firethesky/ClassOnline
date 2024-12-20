@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>学生端 - 课程信息管理系统</title>
+    <title>教师端 - 课程信息管理系统</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -132,74 +132,64 @@
             background-color: #fff;
             height: 100%;
         }
-
-        iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
     </style>
     <!-- 引入 FontAwesome 图标库 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
-<!-- 悬浮窗侧边栏 -->
+<!-- 侧边栏 -->
 <div class="sidebar">
+    <!-- 外层蓝色背景 -->
     <div class="outer-layer">
         <div class="avatar">
-            <img src="images/1.png" alt="头像">
+            <img src="images/2.png" alt="头像"> <!-- 在这里放置老师头像 -->
         </div>
-        <div class="username">学生姓名</div>
+        <div class="username">老师姓名</div>
     </div>
 
+    <!-- 内层白色背景 -->
     <div class="inner-layer">
         <!-- 按钮区域 -->
-        <form id="pageForm" method="POST" action="PageLoader2Servlet" target="mainFrame" style="display: none;">
-            <input type="hidden" name="page" id="pageInput" />
-        </form>
-        <a href="javascript:void(0);" class="function-btn" onclick="submitPage('chat')">
+        <a href="javascript:void(0);" class="function-btn" onclick="loadContent('chat.jsp')">
             <i class="fas fa-comments"></i> 学习互动
         </a>
-        <a href="javascript:void(0);" class="function-btn" onclick="submitPage('prac')">
+        <a href="javascript:void(0);" class="function-btn" onclick="loadContent('ExerciseManagement.jsp')">
             <i class="fas fa-pencil-alt"></i> 习题管理
         </a>
-        <a href="javascript:void(0);" class="function-btn" onclick="submitPage('qa')">
+        <a href="javascript:void(0);" class="function-btn" onclick="loadContent('qa.jsp')">
             <i class="fas fa-question-circle"></i> 提问与答疑
         </a>
-        <a href="javascript:void(0);" class="function-btn" onclick="submitPage('test')">
-            <i class="fas fa-laptop"></i> 网上测试
+        <a href="javascript:void(0);" class="function-btn" onclick="loadContent('test1.jsp')">
+            <i class="fas fa-laptop"></i> 发布测试
         </a>
-        <a href="javascript:void(0);" class="function-btn" onclick="submitPage('check')">
+        <a href="javascript:void(0);" class="function-btn" onclick="loadContent('check.jsp')">
             <i class="fas fa-clipboard-list"></i> 成绩查询
         </a>
-        <a href="javascript:void(0);" class="function-btn" onclick="submitPage('analysis')">
-            <i class="fas fa-clipboard-list"></i> 成绩统计与分析
+        <a href="javascript:void(0);" class="function-btn" onclick="loadContent('analysis.jsp')">
+            <i class="fas fa-chart-bar"></i> 成绩统计与分析
         </a>
     </div>
 </div>
 
-<div class="main-content">
-    <iframe id="mainFrame" name="mainFrame">
-    </iframe>
+<!-- 主内容区域 -->
+<div class="main-content" id="mainContent">
+    <!-- 默认显示内容 -->
+    <h2>请选择一个功能</h2>
 </div>
+
 <script>
-    // 初始化时iframe加载的默认内容
-    document.getElementById('mainFrame').srcdoc = `
-        <html>
-        <body>
-        <h2>欢迎使用课程信息管理系统</h2>
-        <p>点击左侧菜单栏选择你想要操作的功能。</p>
-        </body>
-        </html>
-    `;
-    // 提交表单跳转到iframe
-    function submitPage(targetPage) {
-        const form = document.getElementById('pageForm');
-        const pageInput = document.getElementById('pageInput');
-        pageInput.value = targetPage; // 设置目标页面参数
-        form.submit(); // 提交表单，触发后端跳转
+    // 动态加载内容
+    function loadContent(page) {
+        fetch(page)
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('mainContent').innerHTML = data;
+            })
+            .catch(error => {
+                console.error('Error loading page:', error);
+                document.getElementById('mainContent').innerHTML = "<p>加载失败，请稍后重试。</p>";
+            });
     }
 </script>
-
 </body>
 </html>
