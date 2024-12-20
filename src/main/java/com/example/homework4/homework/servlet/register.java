@@ -1,5 +1,5 @@
 package com.example.homework4.homework.servlet;
-import com.example.homework4.Dao.UserDaoImpl;
+import com.example.homework4.homework.Dao.UserDaoImpl;
 import com.example.homework4.Entity.Student;  // 如果是学生注册的话
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -38,7 +38,7 @@ public class register extends HttpServlet {
             resultSet = userDao.find(checkSql, new Object[]{id});
             if (resultSet.next()) {
                 req.setAttribute("message", "用户名已存在");
-                RequestDispatcher rd = req.getRequestDispatcher("./register.jsp");
+                RequestDispatcher rd = req.getRequestDispatcher("/MA/register.jsp");
                 rd.forward(req, resp);
 
             } else {
@@ -47,7 +47,7 @@ public class register extends HttpServlet {
                 userDao.change(insertSql, new Object[]{id,username, password});
 
                 req.setAttribute("message", "注册成功！");
-                RequestDispatcher rd = req.getRequestDispatcher("./login.jsp");
+                RequestDispatcher rd = req.getRequestDispatcher("index.jsp");
                 rd.forward(req, resp);
             }
         } catch (SQLException e) {
@@ -63,7 +63,7 @@ public class register extends HttpServlet {
                 resultSet = userDao.find(checkSql, new Object[]{id});
                 if (resultSet.next()) {
                     req.setAttribute("message", "用户名已存在");
-                    RequestDispatcher rd = req.getRequestDispatcher("./register.jsp");
+                    RequestDispatcher rd = req.getRequestDispatcher("/MA/register.jsp");
                     rd.forward(req, resp);
 
                 } else {
@@ -72,7 +72,7 @@ public class register extends HttpServlet {
                     userDao.change(insertSql, new Object[]{id,username, password});
 
                     req.setAttribute("message", "注册成功！");
-                    RequestDispatcher rd = req.getRequestDispatcher("./login.jsp");
+                    RequestDispatcher rd = req.getRequestDispatcher("index.jsp");
                     rd.forward(req, resp);
                 }
             } catch (SQLException e) {

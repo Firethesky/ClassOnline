@@ -90,15 +90,13 @@
             <span>时间：周三 13:15-15:50</span>
             <span>地点：一教337</span>
             <span>讲师：欧老师</span>
-            <button onclick="redirectToMenu()">查看详情</button>
+            <form action="selCou2Servlet" method="post">
+                <input type="submit" value="查看详情">
+            </form>
         </div>
     </div>
 </div>
-<script>
-    function redirectToMenu() {
-        window.location.href = 'teaMenu.jsp'; // 设置跳转路径
-    }
-</script>
+
 
 </body>
 </html>

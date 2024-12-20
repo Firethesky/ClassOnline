@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.sql.*" %>
-<%@ page import="com.example.homework4.Dao.UserDaoImpl" %>
+<%@ page import="com.example.homework4.homework.Dao.UserDaoImpl" %>
 <!--此页面用于学生查看老师发布的作业以及自己的做答情况-->
 <html lang="en">
 <head>
@@ -80,7 +80,7 @@
     if (session.getAttribute("student") == null) {
 %>
 <div class="login-warning">
-    <h3>You are not logged in. Please <a href="login.jsp">log in</a> first.</h3>
+    <h3>You are not logged in. Please <a href="index.jsp">log in</a> first.</h3>
 </div>
 <%
 } else {
@@ -131,10 +131,11 @@
             <%
             } else {
             %>
-            <form action="submitAnswer.jsp" method="get" style="display:inline;"><!--跳转到提交作业的页面-->
+            <form action="SubmitAnswerServlet" method="get" style="display:inline;">
                 <input type="hidden" name="exerciseId" value="<%= rs.getInt("id") %>">
                 <button type="submit">去做答</button>
             </form>
+
             <%
                 }
             %>

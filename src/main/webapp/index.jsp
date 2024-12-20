@@ -117,11 +117,14 @@
         <div class="form-group">
             <input type="submit" value="登录">
         </div>
-
-        <div class="form-footer">
-            <p>没有账号？<a href="register.jsp">注册</a></p>
-        </div>
     </form>
+        <div class="form-footer">
+            <!-- 修改成通过表单提交到 RegisterServlet -->
+            <form action="RegisterServlet" method="get">
+                <input type="submit" value="没有账号？注册">
+            </form>
+        </div>
+
 </div>
 
 </body>

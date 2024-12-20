@@ -1,6 +1,7 @@
 package com.example.homework4.homework.servlet;
 
-import com.example.homework4.Dao.UserDaoImpl;
+import com.example.homework4.homework.Dao.UserDaoImpl;
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -22,7 +23,9 @@ public class addExercise extends HttpServlet {
         try {
             UserDaoImpl dao = new UserDaoImpl();
             dao.change(sql, params);
-            response.sendRedirect("./teachereview.jsp");//发布后回到老师发布的作业界面
+            //发布后回到老师发布的作业界面
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/MA/teachereview.jsp");
+            dispatcher.forward(request, response);
         } catch (SQLException e) {
             e.printStackTrace();
             response.getWriter().write("Error adding exercise.");

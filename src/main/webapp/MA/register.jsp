@@ -105,7 +105,7 @@
         <input type="submit" value="注册">
     </form>
     <div class="form-footer">
-        <p>已有账号？<a href="login.jsp">登录</a></p>
+        <p>已有账号？<a href="index.jsp">登录</a></p>
     </div>
 </div>
 </body>

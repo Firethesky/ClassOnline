@@ -1,6 +1,6 @@
 package com.example.homework4.homework.servlet;
 
-import com.example.homework4.Dao.UserDaoImpl;
+import com.example.homework4.homework.Dao.UserDaoImpl;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;

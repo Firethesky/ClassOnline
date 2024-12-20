@@ -145,7 +145,9 @@
         <div class="avatar">
             <img src="images/1.png" alt="头像"> <!-- 在这里放置学生头像 -->
         </div>
-        <div class="username">学生姓名</div>
+        <div class="username">
+            学生姓名：<br>${sessionScope.name} <!-- 显示学生姓名并换行 -->
+        </div>
     </div>
 
     <!-- 内层白色背景 -->
@@ -154,7 +156,7 @@
         <a href="javascript:void(0);" class="function-btn" onclick="loadContent('chat')">
             <i class="fas fa-comments"></i> 学习互动
         </a>
-        <a href="javascript:void(0);" class="function-btn" onclick="loadContent('ExerciseList.jsp')">
+        <a href="javascript:void(0);" class="function-btn" onclick="loadContent('MA/ExerciseList.jsp')">
             <i class="fas fa-pencil-alt"></i> 习题管理
         </a>
         <a href="javascript:void(0);" class="function-btn" onclick="loadContent('qa.jsp')">

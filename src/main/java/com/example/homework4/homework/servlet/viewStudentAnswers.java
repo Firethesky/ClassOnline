@@ -1,6 +1,6 @@
 package com.example.homework4.homework.servlet;
 
-import com.example.homework4.Dao.UserDaoImpl;
+import com.example.homework4.homework.Dao.UserDaoImpl;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -43,7 +43,7 @@ public class viewStudentAnswers extends HttpServlet {
 
             // 将结果传递给前端
             request.setAttribute("answers", answersList);
-            request.getRequestDispatcher("/ViewStudentAnswers.jsp").forward(request, response);
+            request.getRequestDispatcher("MA/ViewStudentAnswers.jsp").forward(request, response);
         } catch (SQLException e) {
             e.printStackTrace();
             response.sendRedirect("error.jsp");

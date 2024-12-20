@@ -1,4 +1,4 @@
-package com.example.homework4.Dao;
+package com.example.homework4.homework.Dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

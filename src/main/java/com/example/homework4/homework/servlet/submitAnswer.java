@@ -1,6 +1,7 @@
 package com.example.homework4.homework.servlet;
 
-import com.example.homework4.Dao.UserDaoImpl;
+import com.example.homework4.homework.Dao.UserDaoImpl;
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -22,7 +23,8 @@ public class submitAnswer extends HttpServlet {
         try {
             UserDaoImpl dao = new UserDaoImpl();
             dao.change(sql, params);
-          response.sendRedirect("ExerciseList.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("MA/ExerciseList.jsp");
+            rd.forward(request, response);
         } catch (SQLException e) {
             e.printStackTrace();
             response.getWriter().write("Error submitting answer.");

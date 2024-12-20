@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.sql.*" %>
-<%@ page import="com.example.homework4.Dao.UserDaoImpl" %>
+<%@ page import="com.example.homework4.homework.Dao.UserDaoImpl" %>
 
 <html lang="en">
 <head>
@@ -78,7 +78,7 @@
         if (session.getAttribute("student") == null) {
     %>
     <div class="alert">
-        <h3>You are not logged in. Please <a href="login.jsp">log in</a> first.</h3>
+        <h3>You are not logged in. Please <a href="index.jsp">log in</a> first.</h3>
     </div>
     <%
     } else {

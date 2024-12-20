@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.sql.*" %>
-<%@ page import="com.example.demo1.Dao.UserDaoImpl" %>
+<%@ page import="com.example.homework4.homework.Dao.UserDaoImpl" %>
 <!--查看发布的作业，点击可查看具体的作答情况-->
 <html>
 <head>
@@ -126,7 +126,20 @@
         }
     %>
 </table>
-<a href="teaMenu.jsp" class="back-link">回到上级界面</a>
+<div style="display: flex; justify-content: center; margin-top: 20px;">
+    <form action="navigationServlet_1" method="post">
+        <input type="hidden" name="action" value="goBack">
+        <button type="submit" style="
+            background: none;
+            border: none;
+            color: blue;
+            text-decoration: underline;
+            cursor: pointer;
+            font-size: 1.2em;">
+            回到上级界面
+        </button>
+    </form>
+</div>
 </body>
 </html>
 

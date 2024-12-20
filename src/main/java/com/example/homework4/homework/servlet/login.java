@@ -1,6 +1,6 @@
 package com.example.homework4.homework.servlet;
 
-import com.example.homework4.Dao.UserDaoImpl;
+import com.example.homework4.homework.Dao.UserDaoImpl;
 import com.example.homework4.Entity.Student;
 import com.example.homework4.Entity.Teacher;
 import jakarta.servlet.RequestDispatcher;
@@ -37,6 +37,9 @@ public class login extends HttpServlet {
                     Student stu = new Student(stuid, username, stupassword);
                     HttpSession session = req.getSession();
                     session.setAttribute("student", id);
+                    session.setAttribute("name",username);
+                    System.out.println("Session Name: " + session.getAttribute("name"));
+
                     RequestDispatcher rd = req.getRequestDispatcher("/menu/selCou1.jsp");
                     rd.forward(req, resp);
                 } else {
@@ -61,6 +64,7 @@ public class login extends HttpServlet {
                     Teacher stu = new Teacher(teaid, username, teapassword);
                     HttpSession session = req.getSession();
                     session.setAttribute("student", stu);
+                    session.setAttribute("name",username);
                     RequestDispatcher rd = req.getRequestDispatcher("/menu/selCou2.jsp");
                     rd.forward(req, resp);
                 } else {

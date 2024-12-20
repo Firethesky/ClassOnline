@@ -1,6 +1,6 @@
 package com.example.homework4.homework.servlet;
 
-import com.example.homework4.Dao.UserDaoImpl;
+import com.example.homework4.homework.Dao.UserDaoImpl;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -46,7 +46,7 @@ public class ViewmyGrade extends HttpServlet {
             request.setAttribute("score", score);
 
             // 转发到 viewgrade.jsp
-            request.getRequestDispatcher("viewgrade.jsp").forward(request, response);//跳转到显示作业和评分的界面
+            request.getRequestDispatcher("MA/viewgrade.jsp").forward(request, response);//跳转到显示作业和评分的界面
         } catch (SQLException e) {
             e.printStackTrace();  // 输出完整的异常信息
             response.getWriter().write("Error loading answer and grade. SQLException: " + e.getMessage());
