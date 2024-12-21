@@ -161,7 +161,7 @@
         <a href="javascript:void(0);" class="function-btn" onclick="loadContent('qa.jsp')">
             <i class="fas fa-question-circle"></i> 提问与答疑
         </a>
-        <a href="javascript:void(0);" class="function-btn" onclick="loadContent('test1.jsp')">
+        <a href="javascript:void(0);" class="function-btn" onclick="loadContent('TestListServlet')">
             <i class="fas fa-laptop"></i> 发布测试
         </a>
         <a href="javascript:void(0);" class="function-btn" onclick="loadContent('check.jsp')">
