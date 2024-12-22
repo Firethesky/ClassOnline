@@ -12,6 +12,7 @@ import java.io.IOException;
 public class selCou1Servlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setAttribute("null","msg");
         req.getRequestDispatcher("/menu/stuMenu.jsp").forward(req,resp);
     }
 }

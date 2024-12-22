@@ -16,7 +16,7 @@ public interface Dao {
         }
         String url = "jdbc:mysql://localhost:3306/studentlogin?useSSL=false&serverTimezone=UTC";
         String username = "root";
-        String password = "xcy00544";
+        String password = "15736617118";
         try {
             Connection conn = DriverManager.getConnection(url, username, password);
             System.out.println("数据库连接成功!");

@@ -1,6 +1,9 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="zh-CN">
+<%
+    String menuStatus =(String) request.getAttribute("menuStatus");
+%>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -153,19 +156,19 @@
     <!-- 内层白色背景 -->
     <div class="inner-layer">
         <!-- 按钮区域 -->
-        <a href="javascript:void(0);" class="function-btn" onclick="loadContent('chat')">
+        <a href="javascript:void(0);" class="function-btn" onclick="loadContent('chatDirect')">
             <i class="fas fa-comments"></i> 学习互动
         </a>
         <a href="javascript:void(0);" class="function-btn" onclick="loadContent('MA/ExerciseList.jsp')">
             <i class="fas fa-pencil-alt"></i> 习题管理
         </a>
-        <a href="javascript:void(0);" class="function-btn" onclick="loadContent('qa.jsp')">
+        <a href="javascript:void(0);" class="function-btn" onclick="loadContent('msgBoardDirect')">
             <i class="fas fa-question-circle"></i> 提问与答疑
         </a>
         <a href="javascript:void(0);" class="function-btn" onclick="loadContent('Stu_TestListServlet')">
             <i class="fas fa-laptop"></i> 网上测试
         </a>
-        <a href="javascript:void(0);" class="function-btn" onclick="loadContent('check.jsp')">
+        <a href="javascript:void(0);" class="function-btn" onclick="loadContent('query')"><%--吉星:将check.jsp改为了query.jsp--%>
             <i class="fas fa-clipboard-list"></i> 成绩查询
         </a>
     </div>
@@ -189,6 +192,18 @@
                 document.getElementById('mainContent').innerHTML = "<p>加载失败，请稍后重试。</p>";
             });
     }
+
+    window.onload = () => {
+        // 获取后端传递的 menuStatus
+        var menuStatus = "<%= menuStatus %>";
+        // 根据 menuStatus 执行不同的操作
+        if (menuStatus === 'chat') {
+            loadContent('chatDirect');
+        } else if (menuStatus === 'msg') {
+            loadContent('msgBoardDirect');
+        }
+    };
+
 </script>
 </body>
 </html>

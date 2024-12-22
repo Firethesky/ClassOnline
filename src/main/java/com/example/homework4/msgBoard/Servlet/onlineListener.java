@@ -17,7 +17,7 @@ public class onlineListener {
         //删除用户
         @Override
         public void sessionDestroyed(HttpSessionEvent se) {
-            String username = (String) se.getSession().getAttribute("current_username");
+            String username = (String) se.getSession().getAttribute("currentUser");
             if(username != null) {
                 onlineUsers.remove(username);
             }

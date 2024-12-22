@@ -1,94 +1,89 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-        <html lang="zh">
+<html lang="zh">
 
-        <head>
-            <title>留言板</title>
-            <style>
-                .left {
-                    float: left;
-                    width: 25%;
-                }
+<head>
+    <title>留言板</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fc;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        h1,h2, h3 {
+            color: #4CAF50;
+        }
+        h1 {
+            margin-top: 0;
+            text-align: center;
+            background-color: #4CAF50;
+            color: white;
+        }
+        .left {
+            float: right;
+            width: 25%;
+        }
 
-                .detail {
-                    width: 25%;
-                    visibility: hidden;
-                    margin-top: 30px;
-                    border: 2px solid #ccc;
-                    padding-left: 3em;
-                    padding-right: 10em;
-                }
-            </style>
-        </head>
-        <%-- <c:out value="${current_username}" /> --%>
+        .detail {
+            width: 25%;
+            margin-top: 30px;
+            border: 2px solid #ccc;
+            padding-left: 3em;
+            padding-right: 10em;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
 
-        <body>
-            <h1>欢迎来到留言板</h1>
-            <h3>当前用户:${current_username}</h3>
-            <!-- 左侧边栏 -->
-            <div class="left">
-                <%--  退出登录  --%>
-                <form action="logout" method="get">
-                    <input type="submit" value="退出登录">
-                </form>
-                <!-- 新增留言 -->
-                <button onclick="showDetail()">新增留言</button>
-                <div class="detail">
-                    <form action="add-msg" method="get">
-                        标题: <input type="text" name="title"><br>
-                        内容: <textarea name="content" rows="10" cols="20"></textarea><br>
-                        <input type="submit" value="提交" onclick="showDetail()">
-                    </form>
-                </div>
-            </div>
-<%--            <!-- 右侧边栏 -->
-            <div class="right">
-                <h3>标题: ${sessionScope.findMsg.title}</h3>
-                <h3>作者: ${sessionScope.findMsg.author}</h3>
-                <h3>内容:</h3><p>${sessionScope.findMsg.content}</p>
-                <h3>时间:${sessionScope.findMsg.time}</h3>
-            </div>--%>
-            <!-- 留言列表 -->
-            <iframe src="msgBox" width="50%" height="70%" id="msgIframe"></iframe>
-        </body>
+        .myIframe{
+            margin-left: 15%;
+        }
 
-        <script>
-            function refreshIframe() {
-                document.getElementById("msgIframe").contentWindow.location.reload();
-            }
+        iframe {
+            border: 1px solid #ccc;
+            border-radius: 15px;
+            margin: 0;
+        }
 
-            setInterval("refreshIframe()", 3000);
+    </style>
+</head>
 
-            //  新增留言
-            function showDetail() {
-                // 获取第一个带有 "detail" 类的元素
-                let element = document.getElementsByClassName("detail")[0];
-                // 获取元素的当前可见性状态
-                let currentVisibility = window.getComputedStyle(element).visibility;
-                // 切换可见性
-                if (currentVisibility === 'visible') {
-                    element.style.visibility = 'hidden';
-                } else {
-                    element.style.visibility = 'visible';
-                }
-            }
+<body>
+<h1>欢迎来到留言板</h1>
+<!-- 左侧边栏 -->
+<iframe src="msgBox" width="50%" height="80%" id="msgIframe" class="myIframe"></iframe>
+<!-- 新增留言 -->
+<div class="left">
+    <div class="detail" id="detail">
+        <h3>新增留言</h3>
+        <form action="add-msg" method="get">
+            标题: <input type="text" name="title"><br>
+            内容: <textarea name="content" rows="10" cols="20"></textarea><br>
+            <input type="submit" value="提交">
+        </form>
+    </div>
+</div>
+</body>
 
-                // 在页面关闭时触发退出操作
-                window.addEventListener("beforeunload", function (event) {
-                // 发送同步请求退出
-                $.ajax({
-                    url: "/logout",
-                    method: "GET",
-                    async: false, // 确保请求是同步的，直到退出操作完成
-                    success: function (response) {
-                        console.log("Logout successfully");
-                    },
-                    error: function () {
-                        console.log("Error during logout");
-                    }
-                });
-            });
-        </script>
+<script>
+    // 切换新增留言表单的显示/隐藏状态
+    function toggleAddBox() {
+        var detailBox = document.getElementById("detail");
+        if (detailBox.style.display === "none" || detailBox.style.display === "") {
+            detailBox.style.display = "block"; // 显示表单
+        } else {
+            detailBox.style.display = "none"; // 隐藏表单
+        }
+    }
 
-        </html>
+    // 刷新iframe
+    function refreshIframe() {
+        document.getElementById("msgIframe").contentWindow.location.reload();
+    }
+    setInterval("refreshIframe()", 3000);
+</script>
+
+</html>

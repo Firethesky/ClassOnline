@@ -37,7 +37,7 @@ public class addMsg extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //获取属性
         HttpSession session = req.getSession();
-        String author = (String) session.getAttribute("current_username");
+        String author = (String) session.getAttribute("currentUser");
         String title = cleanText(req.getParameter("title"));
         String content = cleanText(req.getParameter("content"));
         newMsg = new Message(title, content, author);
@@ -47,6 +47,7 @@ public class addMsg extends HttpServlet {
         } catch (DaoException e) {
             throw new RuntimeException(e);
         }
-        req.getRequestDispatcher("/msgList.jsp").forward(req, resp);
+        req.setAttribute("menuStatus","msg");
+        req.getRequestDispatcher("/menu/stuMenu.jsp").forward(req,resp);
     }
 }

@@ -1,8 +1,11 @@
-package com.example.homework4.homework.servlet;
 
+        package com.example.homework4.homework.servlet;
+
+import com.example.homework4.chatRoom.chat;
 import com.example.homework4.homework.Dao.UserDaoImpl;
 import com.example.homework4.Entity.Student;
 import com.example.homework4.Entity.Teacher;
+import com.example.homework4.msgBoard.Servlet.onlineListener;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -37,9 +40,15 @@ public class login extends HttpServlet {
                     Student stu = new Student(stuid, username, stupassword);
                     HttpSession session = req.getSession();
                     session.setAttribute("student", id);
+                    session.setAttribute("student", stu);
                     session.setAttribute("name",username);
                     System.out.println("Session Name: " + session.getAttribute("name"));
-
+                    //chatRoom用
+                    session.setAttribute("currentUser",username);
+                    chat.userList.add(username);
+                    req.setAttribute("users", chat.userList);
+                    onlineListener.usersSession.addOnlineUser(username);
+                    //0.0
                     RequestDispatcher rd = req.getRequestDispatcher("/menu/selCou1.jsp");
                     rd.forward(req, resp);
                 } else {
@@ -65,6 +74,12 @@ public class login extends HttpServlet {
                     HttpSession session = req.getSession();
                     session.setAttribute("student", stu);
                     session.setAttribute("name",username);
+                    //chatRoom用
+                    session.setAttribute("currentUser",username);
+                    chat.userList.add(username);
+                    req.setAttribute("users", chat.userList);
+                    onlineListener.usersSession.addOnlineUser(username);
+                    //0.0
                     RequestDispatcher rd = req.getRequestDispatcher("/menu/selCou2.jsp");
                     rd.forward(req, resp);
                 } else {

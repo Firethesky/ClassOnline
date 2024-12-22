@@ -12,7 +12,7 @@ import java.io.IOException;
 @WebServlet("/sendMsg")
 public class sendMsg extends HttpServlet {
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 //        当前用户名
         HttpSession session = req.getSession();
         String user = session.getAttribute("currentUser").toString();
@@ -27,7 +27,7 @@ public class sendMsg extends HttpServlet {
 //        防止req为空
         req.setAttribute("users",chat.userList);
         req.setAttribute("current",session.getAttribute("currentUser"));
-
-        req.getRequestDispatcher("/chatRoom/chatRoom.jsp").forward(req,resp);
+        req.setAttribute("menuStatus","chat");
+        req.getRequestDispatcher("/menu/stuMenu.jsp").forward(req,resp);
     }
 }
