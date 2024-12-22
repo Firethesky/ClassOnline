@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.sql.*" %>
-<%@ page import="com.example.homework4.homework.Dao.UserDaoImpl" %>
+<%@ page import="com.example.ClassOnline.homework.Dao.UserDaoImpl" %>
 <!--查看发布的作业，点击可查看具体的作答情况-->
 <html>
 <head>

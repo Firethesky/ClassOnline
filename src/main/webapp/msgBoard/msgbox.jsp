@@ -1,4 +1,4 @@
-<%@ page import="com.example.homework4.msgBoard.Entity.Message" %>
+<%@ page import="com.example.ClassOnline.msgBoard.Entity.Message" %>
     <%@ page import="java.util.List" %>
         <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
             <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>

@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.sql.*" %>
-<%@ page import="com.example.homework4.homework.Dao.UserDaoImpl" %>
+<%@ page import="com.example.ClassOnline.homework.Dao.UserDaoImpl" %>
 <!--此页面用于学生查看老师发布的作业以及自己的做答情况-->
 <html lang="en">
 <head>
